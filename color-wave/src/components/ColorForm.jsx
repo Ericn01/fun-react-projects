@@ -22,7 +22,7 @@ export const ColorForm = ( {updateField, formData} ) => {
             />
             <div className="flex justify-between text-xs text-gray-500">
                 <span>1</span>
-                <span className="font-medium text-gray-700">{formData.granularity}</span>
+                <span className="font-bold text-gray-700 ">{formData.granularity}</span>
                 <span>10</span>
             </div>
         </div>
@@ -49,7 +49,7 @@ export const ColorForm = ( {updateField, formData} ) => {
             />
             <div className="flex justify-between text-xs text-gray-500">
                 <span>1</span>
-                <span className="font-medium text-gray-700">{formData.uniformity}</span>
+                <span className="font-bold text-gray-700">{formData.uniformity}</span>
                 <span>100</span>
             </div>
             </div>

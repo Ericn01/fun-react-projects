@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 import './App.css'
 import { ColorForm } from './components/ColorForm.jsx';
+import { ColorCanvas } from './components/ColorCanvas.jsx';
 
 function App() {
   const [formData, setFormData] = useState({
@@ -25,9 +26,9 @@ function App() {
   };
 
   return (
-    <main className='bg-black m-0 p-0'>
+    <main className='m-0 p-0 flex'>
       <ColorForm updateField={updateField} formData={formData}/>
-
+      <ColorCanvas />
     </main>
   )
 }
