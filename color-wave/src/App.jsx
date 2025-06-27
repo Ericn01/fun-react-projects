@@ -25,10 +25,9 @@ function App() {
   };
 
   return (
-    <main>
+    <main className='bg-black m-0 p-0'>
       <ColorForm updateField={updateField} formData={formData}/>
-      <h3> Form Values: </h3>
-      {Object.entries(formData).map( ([k,v]) => <div>{`Key:${k}, Value: ${v}`}</div>)}
+
     </main>
   )
 }
