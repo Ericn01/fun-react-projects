@@ -101,17 +101,17 @@ export default class ColorGenerator {
         let r, g, b;
         
         if (0 <= h && h < 1/6) {
-        r = c; g = x; b = 0;
+            r = c; g = x; b = 0;
         } else if (1/6 <= h && h < 1/3) {
-        r = x; g = c; b = 0;
+            r = x; g = c; b = 0;
         } else if (1/3 <= h && h < 1/2) {
-        r = 0; g = c; b = x;
+            r = 0; g = c; b = x;
         } else if (1/2 <= h && h < 2/3) {
-        r = 0; g = x; b = c;
+            r = 0; g = x; b = c;
         } else if (2/3 <= h && h < 5/6) {
-        r = x; g = 0; b = c;
+            r = x; g = 0; b = c;
         } else {
-        r = c; g = 0; b = x;
+            r = c; g = 0; b = x;
         }
         
         return {

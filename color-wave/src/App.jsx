@@ -28,7 +28,7 @@ function App() {
   return (
     <main className='m-0 p-0 flex'>
       <ColorForm updateField={updateField} formData={formData}/>
-      <ColorCanvas />
+      <ColorCanvas formData={formData}/>
     </main>
   )
 }
