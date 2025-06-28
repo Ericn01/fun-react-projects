@@ -5,15 +5,14 @@ export const LaunchCardList = ( {filteredLaunchData} ) => {
                     0;
     return (
         <section className="max-w-4xl mx-auto p-6"> 
-            <div className="mb-8">
-                <h1 className="text-3xl font-bold text-gray-900 mb-2"></h1>
-                Launch Data
+            <div className="mb-5">
+                <h1 className="text-3xl font-bold text-gray-900 mb-2">Launch Data</h1>
             </div>
             <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between bg-gray-50 rounded-lg p-4 border "> 
                 <div className="mb-2 sm:mb-0"> 
                     <span className="text-sm text-gray-600">Showing data from </span>
                     <span className="font-semibold text-gray-900">{filteredLaunchData.length}</span>
-                    <span className="text-sm text-gray-600"> launches</span>
+                    <span className="text-sm text-gray-600"> {filteredLaunchData.length > 1 ? 'launches' : 'launch'}</span>
                 </div>
                 <div className="flex items-center">
                     <span className="text-sm text-gray-600 mr-2">Success Rate:</span>
