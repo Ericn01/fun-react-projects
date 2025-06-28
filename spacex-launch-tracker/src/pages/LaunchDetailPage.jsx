@@ -1,7 +1,7 @@
 import { useParams, useNavigate, Link } from 'react-router-dom';
 import { useSpaceX } from '../context/SpaceXContext';
 import { LoadingSpinner } from '../components/LoadingSpinner';
-import { ArrowLeft, ExternalLink, Calendar, Target, Rocket, House, MapPin, Clock, Gauge } from 'lucide-react';
+import { ArrowLeft, ExternalLink, Calendar, Target, Rocket, House, MapPin, Clock, Gauge, Weight, RulerDimensionLine, LucideRuler } from 'lucide-react';
 
 const LaunchDetailPage = () => {
     const { launchId } = useParams();
@@ -166,17 +166,17 @@ const LaunchDetailPage = () => {
                             
                             <div className="space-y-6">
                                 <InfoItem 
-                                    icon={<Gauge className="w-4 h-4" />}
+                                    icon={<LucideRuler className="w-4 h-4" />}
                                     label="Height" 
                                     value={`${rocket.height.meters} m (${rocket.height.feet} ft)`}
                                 />
                                 <InfoItem 
-                                    icon={<Gauge className="w-4 h-4" />}
+                                    icon={<RulerDimensionLine className="w-4 h-4" />}
                                     label="Diameter" 
                                     value={`${rocket.diameter.meters} m (${rocket.diameter.feet} ft)`}
                                 />
                                 <InfoItem 
-                                    icon={<Gauge className="w-4 h-4" />}
+                                    icon={<Weight className="w-4 h-4" />}
                                     label="Mass" 
                                     value={`${rocket.mass.kg.toLocaleString()} kg`}
                                 />
