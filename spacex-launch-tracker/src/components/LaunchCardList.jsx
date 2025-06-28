@@ -1,4 +1,5 @@
 import { LaunchCard } from "./LaunchCard";
+
 export const LaunchCardList = ({ launchData }) => {
     const successfulLaunches = launchData.filter(launch => launch.success === true);
     const successRate = launchData.length > 0 
@@ -39,7 +40,7 @@ export const LaunchCardList = ({ launchData }) => {
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {launchData.map((launch) => (
-            <LaunchCard key={launch.id} launch={launch} />
+                <LaunchCard key={launch.id} launch={launch} />
             ))}
         </div>
         </section>

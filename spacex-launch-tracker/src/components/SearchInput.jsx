@@ -1,6 +1,6 @@
 export const SearchInput = ({ onSearch, searchValue }) => {
     const handleChange = (e) => {
-        onSearch(e.target.value);
+        onSearch(e.currentTarget.value);
     };
 
     return (
