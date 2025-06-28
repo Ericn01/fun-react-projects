@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 import './App.css'
 import { LaunchCardList } from './components/LaunchCardList';
+import { Header } from './components/Header';
 
 function App() {
   const [launchData, setLaunchData] = useState(null); // API
@@ -30,8 +31,9 @@ function App() {
 
   return (
     <main>
-      <label htmlFor='launchSearch'> Filter Launches by Name </label>
-      <input type='text' name='launchSearch' placeholder='Filter missions by name' onChange={handleMissionSearch}/>
+      <Header />
+      <label htmlFor='launchSearch' className='text-sm font-bold'> Filter Launches by Name:  </label>
+      <input type='text' name='launchSearch' placeholder='Filter missions by name' onChange={handleMissionSearch} className='rounded-lg border-b-2 border-gray-200 ml-1.5'/>
       <p> Your Input: {searchName ? searchName : " Nothing yet..."} </p>
       {launchData ? 
       ( 

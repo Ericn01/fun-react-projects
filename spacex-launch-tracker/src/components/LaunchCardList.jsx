@@ -1,7 +1,7 @@
 import { LaunchCard } from "./LaunchCard"
 export const LaunchCardList = ( {filteredLaunchData} ) => {
     const successRate = filteredLaunchData.length > 0 ? (
-                    filteredLaunchData.filter(launch => launch.success).length / filteredLaunchData.length * 100).toPrecision(2) :
+                    Math.round(filteredLaunchData.filter(launch => launch.success).length / filteredLaunchData.length * 100)):
                     0;
     return (
         <section className="max-w-4xl mx-auto p-6"> 
