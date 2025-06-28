@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react'
 import './App.css'
+import { LaunchCardList } from './components/LaunchCardList';
 
 function App() {
   const [launchData, setLaunchData] = useState(null); // API
@@ -25,29 +26,26 @@ function App() {
   }
 
 
+  const filteredLaunchData = launchData?.filter( (launchData) => launchData.name.toLowerCase().includes(searchName));
+
   return (
     <main>
-      <input type='text' placeholder='Filter missions by name' onChange={handleMissionSearch}/>
-      <p> {searchName} </p>
+      <label htmlFor='launchSearch'> Filter Launches by Name </label>
+      <input type='text' name='launchSearch' placeholder='Filter missions by name' onChange={handleMissionSearch}/>
+      <p> Your Input: {searchName ? searchName : " Nothing yet..."} </p>
       {launchData ? 
-      
       ( 
-
-        <section>
-          <h1> Showing data from {launchData.length} launches </h1>
-          <h3> Launch Success Rate: {(launchData.filter(launch => launch.success).length / launchData.length * 100).toPrecision(2)}%</h3>
-            {launchData.filter( (launchData) => launchData.name.toLowerCase().includes(searchName)).map( (launch) => {
-              return (
-                <ul key={launch.id}>
-                  <li> Mission Date: {launch.date_utc.split('T')[0]} </li>
-                  <li> Mission Name: {launch.name} </li>
-                  <li> Flight number: {launch.flight_number}</li>
-                  <li> Successful Mission: {launch.success ? "Yes" : "No"}</li>
-                </ul>
-              )
-            })}
-            <li> Mission Name</li>
-        </section>
+        filteredLaunchData.length === 0 ? (
+          <section> 
+            <h1> Sorry, there's no info to show. Please change your search query</h1> 
+            <img src='https://www.kapwing.com/explore/crying-cat-meme-template' width={"300px"} />
+          </section>
+        ) :
+        (
+          <section>
+            <LaunchCardList filteredLaunchData={filteredLaunchData} />
+          </section>
+        )
       ) : <p> Launch Data is loading... </p>}
     </main>
   )
