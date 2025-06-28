@@ -1,33 +1,47 @@
-import { LaunchCard } from "./LaunchCard"
-export const LaunchCardList = ( {filteredLaunchData} ) => {
-    const successRate = filteredLaunchData.length > 0 ? (
-                    Math.round(filteredLaunchData.filter(launch => launch.success).length / filteredLaunchData.length * 100)):
-                    0;
+import { LaunchCard } from "./LaunchCard";
+export const LaunchCardList = ({ launchData }) => {
+    const successfulLaunches = launchData.filter(launch => launch.success === true);
+    const successRate = launchData.length > 0 
+        ? Math.round((successfulLaunches.length / launchData.length) * 100)
+        : 0;
+
     return (
-        <section className="max-w-4xl mx-auto p-6"> 
-            <div className="mb-5">
-                <h1 className="text-3xl font-bold text-gray-900 mb-2">Launch Data</h1>
+        <section className="space-y-6">
+        <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-6">
+            <h2 className="text-2xl font-bold text-gray-900 mb-4 flex items-center">
+            <span className="mr-2">🛰️</span>
+            Mission Database
+            </h2>
+            
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+            <div className="bg-blue-50 rounded-lg p-4 text-center">
+                <div className="text-2xl font-bold text-blue-600">{launchData.length}</div>
+                <div className="text-sm text-blue-800">Total Missions</div>
             </div>
-            <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between bg-gray-50 rounded-lg p-4 border "> 
-                <div className="mb-2 sm:mb-0"> 
-                    <span className="text-sm text-gray-600">Showing data from </span>
-                    <span className="font-semibold text-gray-900">{filteredLaunchData.length}</span>
-                    <span className="text-sm text-gray-600"> {filteredLaunchData.length > 1 ? 'launches' : 'launch'}</span>
+            <div className="bg-green-50 rounded-lg p-4 text-center">
+                <div className="text-2xl font-bold text-green-600">{successfulLaunches.length}</div>
+                <div className="text-sm text-green-800">Successful</div>
+            </div>
+            <div className="bg-purple-50 rounded-lg p-4 text-center">
+                <div className={`text-2xl font-bold ${
+                successRate >= 85 ? 'text-green-600' : successRate >= 70 ? 'text-yellow-600' : 'text-red-600'
+                }`}>
+                {successRate}%
                 </div>
-                <div className="flex items-center">
-                    <span className="text-sm text-gray-600 mr-2">Success Rate:</span>
-                    <span className={`px-3 py-1 rounded-full text-sm font-medium ${
-                    successRate >= 85 
-                        ? 'bg-green-100 text-green-800'
-                        : successRate >= 70
-                        ? 'bg-yellow-100 text-yellow-800'
-                        : 'bg-red-100 text-red-800'
-                    }`}>
-                    {successRate}%
-                    </span>
+                <div className={`text-sm ${
+                successRate >= 85 ? 'text-green-800' : successRate >= 70 ? 'text-yellow-800' : 'text-red-800'
+                }`}>
+                Success Rate
                 </div>
-            </div>            
-            {filteredLaunchData.map((launchInfo) => <LaunchCard filteredLaunchData={launchInfo} key={launchInfo.id}/> )};
+            </div>
+            </div>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            {launchData.map((launch) => (
+            <LaunchCard key={launch.id} launch={launch} />
+            ))}
+        </div>
         </section>
-    )
-}
+    );
+};

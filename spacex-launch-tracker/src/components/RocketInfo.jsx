@@ -1,35 +1,69 @@
 export const RocketInfo = ({rocketData}) => {
     const formatCostValue = (cost) => {
-        return Intl.NumberFormat("en-US", {style: 'currency', currency: "USD"}).format(cost)
+        return Intl.NumberFormat("en-US", {
+            style: 'currency', 
+            currency: "USD",
+            notation: 'compact',
+            maximumFractionDigits: 1
+        }).format(cost)
+    };
+    // Safety check 
+    if (!rocketData || rocketData.length === 0){
+        return null;
     }
+
     return (
-        <section className="rounded-xl drop-shadow-xl bg-white p-3.5">
-            <div className="mb-5">
-                <h1 className="text-3xl font-bold text-gray-900 mb-2">Rocket Data</h1>
+        <section className="bg-white rounded-xl shadow-lg border border-gray-200 p-6 sticky top-8">
+            <div className="mb-6">
+
+                <h2 className="text-2xl font-bold text-gray-900 flex items-center">
+                    <span className="mr-2"> 🚀 </span>
+                    Rocket Fleet
+                </h2>
+                <p className="text-gray-600 text-sm mt-1">
+                    Active SpaceX rocket information
+                </p>
             </div>
-            {rocketData.map( rocket => {
-                return (
-                    <div className="my-3 border-2 border-black p-3 text-left m-3">
-                        <h3 className="font-bold text-xl mb-2"> {rocket.name} Basic Info </h3>
-                        <div className="flex items-center"> 
-                            <span className="text-sm font-medium text-gray-600 w-32 mb-1"> Mass:  </span>
-                            <span className="text-sm font-semibold text-gray-900"> {rocket.mass.kg.toLocaleString()}kg </span>
-                        </div>
-                        <div className="flex items-center"> 
-                            <span className="text-sm font-medium text-gray-600 w-32 mb-1"> First flight: </span>
-                            <span className="text-sm font-semibold text-gray-900"> {rocket.first_flight} </span>
-                        </div>
-                        <div className="flex items-center"> 
-                            <span className="text-sm font-medium text-gray-600 w-32 mb-1"> Cost per Launch: </span>
-                            <span className="text-sm font-semibold text-gray-900"> {formatCostValue(rocket.cost_per_launch)} </span>
-                        </div>
-                        <div className="flex items-center"> 
-                            <span className="text-sm font-medium text-gray-600 w-32 mb-1"> Active:  </span>
-                            <span className="text-sm font-semibold text-gray-900"> {rocket.active ? "Yes" : "No"} </span>
+            <div className="space-y-4">
+                {rocketData.map( rocket => (
+                    <div 
+                        key={rocket.id} 
+                        className="border border-gray-200 rounded-lg p-4 hover:shadow-md transition-shadow"
+                    >
+                        <h3 className="font-bold text-lg mb-3 text-gray-900 border-b border-gray-100 pb-2">
+                            {rocket.name}
+                        </h3>
+
+                        <div className="grid grid-cols-1 gap-2">
+                            <InfoRow label="Mass" value={`${rocket.mass.kg.toLocaleString()} kg`} />
+                            <InfoRow label="First Flight" value={rocket.first_flight} />
+                            <InfoRow label="Cost per Launch" value={formatCostValue(rocket.cost_per_launch)} />
+                            <InfoRow
+                                label="Status"
+                                value={
+                                    <span className={`inline-flex item-center px-2.5 py-0.5 rounded-full text-xs font-medium ${
+                                        rocket.active
+                                        ? 'bg-green-100 text-green-800' 
+                                        : 'bg-gray-100 text-gray-800'
+
+                                    }`}>
+                                {rocket.active ? "Active" : "Inactive"}
+                                </span>
+                                }
+                            />
                         </div>
                     </div>
-                );
-            })}
+                ))};
+            </div>
         </section>
     );
+}
+
+export const InfoRow = ( {label, value} ) => {
+    return (
+        <div className="flex justify-between items-center py-1">
+            <span className="text-sm font-medium text-gray-600">{label}</span>
+            <span className="text-sm font-semibold text-gray-900">{value}</span>
+        </div>
+    )
 }
