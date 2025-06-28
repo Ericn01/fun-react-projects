@@ -65,7 +65,7 @@ export const RocketInfo = ({rocketData}) => {
                             />
                         </div>
                     </div>
-                ))};
+                ))}
             </div>
         </section>
     );
