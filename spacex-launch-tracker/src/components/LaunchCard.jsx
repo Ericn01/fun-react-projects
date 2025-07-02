@@ -15,54 +15,74 @@ export const LaunchCard = ({launch}) => {
         day: 'numeric'
     });
 
+    
     return (
         <Link to={`/launch/${id}`} className="block group">
-            <article className="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden hover:shadow-lg transition-all duration-200 group-hover:-translate-y-1">
+            <article className="bg-white/10 backdrop-blur-md rounded-2xl shadow-xl border border-white/20 overflow-hidden hover:shadow-2xl transition-all duration-300 group-hover:-translate-y-2 group-hover:bg-white/15">
                 {backgroundImage && (
-                <div 
-                    className="h-48 bg-cover bg-center bg-gray-100"
-                    style={{ backgroundImage: `url(${backgroundImage})` }}
-                />
+                    <div className="relative">
+                        <div
+                            className="h-48 bg-cover bg-center"
+                            style={{ backgroundImage: `url(${backgroundImage})` }}
+                        />
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
+                        
+                        {/* Flight number overlay */}
+                        <div className="absolute top-4 right-4">
+                            <span className="bg-white/20 backdrop-blur-sm border border-white/30 text-white px-3 py-1 rounded-full text-sm font-bold">
+                                #{flight_number}
+                            </span>
+                        </div>
+                    </div>
                 )}
                 
                 <div className="p-6">
-                <div className="flex justify-between items-start mb-4">
-                    <h3 className="text-xl font-bold text-gray-900 leading-tight group-hover:text-blue-600 transition-colors">
-                    {name}
-                    </h3>
-                    <span className="text-sm font-medium text-gray-500 bg-gray-100 px-2 py-1 rounded">
-                    #{flight_number}
-                    </span>
-                </div>
-                
-                <div className="space-y-3">
-                    <div className="flex justify-between items-center">
-                        <span className="text-sm font-medium text-gray-600">Launch Date:</span>
-                        <span className="text-sm font-semibold text-gray-900">{formattedDate}</span>
+                    <div className="mb-6">
+                        <h3 className="text-xl md:text-2xl font-bold text-white leading-tight group-hover:text-blue-200 transition-colors duration-300 mb-2">
+                            {name}
+                        </h3>
+                        {!backgroundImage && (
+                            <span className="bg-blue-500/20 border border-blue-400/30 text-blue-200 px-3 py-1 rounded-full text-sm font-medium">
+                                Flight #{flight_number}
+                            </span>
+                        )}
                     </div>
-                    <div className="flex justify-between items-center">
-                        <span className="text-sm font-medium text-gray-600">Rocket:</span>
-                        <span className="text-sm font-semibold text-gray-900">{rocketData.name}</span>
+                    
+                    <div className="space-y-4">
+                        <div className="flex justify-between items-center py-2 border-b border-white/10">
+                            <span className="text-sm font-medium text-blue-200">Launch Date:</span>
+                            <span className="text-sm font-bold text-white">{formattedDate}</span>
+                        </div>
+                        
+                        <div className="flex justify-between items-center py-2 border-b border-white/10">
+                            <span className="text-sm font-medium text-blue-200">Rocket:</span>
+                            <span className="text-sm font-bold text-white">{rocketData.name}</span>
+                        </div>
+                        
+                        <div className="flex justify-between items-center py-2">
+                            <span className="text-sm font-medium text-blue-200">Mission Status:</span>
+                            <span className={`inline-flex items-center px-3 py-1 rounded-full text-sm font-bold border ${
+                                success === null
+                                    ? 'bg-yellow-500/20 text-yellow-300 border-yellow-400/30'
+                                    : success
+                                    ? 'bg-green-500/20 text-green-300 border-green-400/30'
+                                    : 'bg-red-500/20 text-red-300 border-red-400/30'
+                            }`}>
+                                {success === null ? "Pending" : success ? "Success" : "Failed"}
+                            </span>
+                        </div>
                     </div>
-                    <div className="flex justify-between items-center">
-                    <span className="text-sm font-medium text-gray-600">Mission Status:</span>
-                    <span className={`inline-flex items-center px-3 py-1 rounded-full text-sm font-medium ${
-                        success === null
-                        ? 'bg-gray-100 text-gray-700'
-                        : success
-                        ? 'bg-green-100 text-green-800'
-                        : 'bg-red-100 text-red-800'
-                    }`}>
-                        {success === null ? "Pending" : success ? "Success" : "Failed"}
-                    </span>
+                    
+                    <div className="mt-6 pt-4 border-t border-white/20">
+                        <div className="flex items-center justify-between">
+                            <span className="text-blue-300 font-medium group-hover:text-blue-200 transition-colors duration-300 flex items-center">
+                                View Mission Details
+                                <svg className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                                </svg>
+                            </span>
+                        </div>
                     </div>
-                </div>
-                
-                <div className="mt-4 pt-4 border-t border-gray-100">
-                    <span className="text-sm text-blue-600 font-medium group-hover:text-blue-800">
-                    View Details →
-                    </span>
-                </div>
                 </div>
             </article>
         </Link>

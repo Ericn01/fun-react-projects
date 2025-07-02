@@ -55,6 +55,7 @@ export const LaunchCardList = ({ launchData }) => {
         
         // Re-apply current sort with new order
         if (selectedSort) {
+            const event = { currentTarget: { id: selectedSort } };
             // Temporarily set the new order for the sort function
             const tempOrder = newOrder;
             
@@ -89,38 +90,40 @@ export const LaunchCardList = ({ launchData }) => {
 
     return (
         <section className="space-y-6">
-            <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-6">
-                <h2 className="text-2xl font-bold text-gray-900 mb-4 flex items-center">
-                    <span className="mr-2">🛰️</span>
-                    Mission Database
+            <div className="bg-white/10 backdrop-blur-md rounded-3xl shadow-2xl border border-white/20 p-6 md:p-8">
+                <h2 className="text-2xl md:text-3xl font-bold text-white mb-6 flex items-center">
+                    <span className="mr-3 text-3xl">🛰️</span>
+                    <span className="bg-gradient-to-r from-white to-blue-200 bg-clip-text text-transparent">
+                        Mission Database
+                    </span>
                 </h2>
                 
-                <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
-                    <div className="bg-blue-50 rounded-lg p-4 text-center">
-                        <div className="text-2xl font-bold text-blue-600">{launchData.length}</div>
-                        <div className="text-sm text-blue-800">Total Missions</div>
+                <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-6">
+                    <div className="bg-blue-500/20 backdrop-blur-sm rounded-2xl p-4 text-center border border-blue-400/30">
+                        <div className="text-2xl md:text-3xl font-bold text-blue-200">{launchData.length}</div>
+                        <div className="text-sm text-blue-300 font-medium">Total Missions</div>
                     </div>
-                    <div className="bg-green-50 rounded-lg p-4 text-center">
-                        <div className="text-2xl font-bold text-green-600">{successfulLaunches.length}</div>
-                        <div className="text-sm text-green-800">Successful</div>
+                    <div className="bg-green-500/20 backdrop-blur-sm rounded-2xl p-4 text-center border border-green-400/30">
+                        <div className="text-2xl md:text-3xl font-bold text-green-200">{successfulLaunches.length}</div>
+                        <div className="text-sm text-green-300 font-medium">Successful</div>
                     </div>
-                    <div className="bg-purple-50 rounded-lg p-4 text-center">
-                        <div className={`text-2xl font-bold ${
-                            successRate >= 85 ? 'text-green-600' : successRate >= 70 ? 'text-yellow-600' : 'text-red-600'
+                    <div className="bg-purple-500/20 backdrop-blur-sm rounded-2xl p-4 text-center border border-purple-400/30">
+                        <div className={`text-2xl md:text-3xl font-bold ${
+                            successRate >= 85 ? 'text-green-200' : successRate >= 70 ? 'text-yellow-200' : 'text-red-200'
                         }`}>
                             {successRate}%
                         </div>
-                        <div className={`text-sm ${
-                            successRate >= 85 ? 'text-green-800' : successRate >= 70 ? 'text-yellow-800' : 'text-red-800'
+                        <div className={`text-sm font-medium ${
+                            successRate >= 85 ? 'text-green-300' : successRate >= 70 ? 'text-yellow-300' : 'text-red-300'
                         }`}>
                             Success Rate
                         </div>
                     </div>
                 </div>
                     
-                <div className="w-full flex justify-center mt-4"> 
+                <div className="w-full flex justify-center mb-4"> 
                     <button 
-                        className="rounded-full p-2 flex justify-center items-center cursor-pointer bg-gradient-to-br from-slate-900 via-blue-900 to-indigo-900 hover:from-slate-800 hover:via-blue-800 hover:to-indigo-800 transition-colors duration-200" 
+                        className="rounded-full p-3 flex justify-center items-center cursor-pointer bg-gradient-to-br from-blue-600 to-indigo-600 hover:from-blue-500 hover:to-indigo-500 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 border border-white/20" 
                         onClick={() => setHiddenPanel(!hiddenPanel)}
                         aria-label={hiddenPanel ? "Show sort options" : "Hide sort options"}
                     > 
@@ -136,13 +139,13 @@ export const LaunchCardList = ({ launchData }) => {
                 <div className={`overflow-hidden transition-all duration-300 ease-in-out ${
                     hiddenPanel ? "max-h-0 opacity-0" : "max-h-40 opacity-100"
                 }`}>
-                    <div className="mt-4 p-4 bg-gray-50 rounded-lg border border-gray-200">
-                        <div className="flex items-center justify-between mb-3">
-                            <h4 className="text-lg font-semibold text-gray-900">Sort by</h4>
+                    <div className="mt-4 p-4 bg-gradient-to-r from-blue-500/10 to-indigo-500/10 rounded-2xl border border-blue-400/20 backdrop-blur-sm">
+                        <div className="flex items-center justify-between mb-4">
+                            <h4 className="text-lg font-semibold text-white">Sort by</h4>
                             {selectedSort && (
                                 <button
                                     onClick={toggleSortOrder}
-                                    className="flex items-center space-x-1 px-3 py-1 text-sm bg-blue-100 hover:bg-blue-200 text-blue-700 rounded-md transition-colors duration-200"
+                                    className="flex items-center space-x-2 px-4 py-2 text-sm bg-white/10 hover:bg-white/20 text-blue-200 rounded-lg transition-all duration-300 border border-white/20 backdrop-blur-sm"
                                     aria-label={`Sort ${sortOrder === 'asc' ? 'ascending' : 'descending'}`}
                                 >
                                     {sortOrder === 'asc' ? (
@@ -150,7 +153,7 @@ export const LaunchCardList = ({ launchData }) => {
                                     ) : (
                                         <ArrowDown className="w-4 h-4" />
                                     )}
-                                    <span>{sortOrder === 'asc' ? 'Ascending' : 'Descending'}</span>
+                                    <span className="font-medium">{sortOrder === 'asc' ? 'Ascending' : 'Descending'}</span>
                                 </button>
                             )}
                         </div>
@@ -160,11 +163,11 @@ export const LaunchCardList = ({ launchData }) => {
                                     type="radio" 
                                     name="sort-selection" 
                                     id="date-sort" 
-                                    className="w-4 h-4 text-blue-600 focus:ring-blue-500 focus:ring-2"
+                                    className="w-4 h-4 text-blue-400 focus:ring-blue-400 focus:ring-2 bg-white/10 border-white/30"
                                     onChange={handleSortData}
                                     checked={selectedSort === 'date-sort'}
                                 />
-                                <label htmlFor="date-sort" className="text-sm font-medium text-gray-700 cursor-pointer">
+                                <label htmlFor="date-sort" className="text-sm font-medium text-blue-100 cursor-pointer hover:text-white transition-colors duration-200">
                                     Date
                                 </label>
                             </div>
@@ -173,11 +176,11 @@ export const LaunchCardList = ({ launchData }) => {
                                     type="radio" 
                                     name="sort-selection" 
                                     id="name-sort" 
-                                    className="w-4 h-4 text-blue-600 focus:ring-blue-500 focus:ring-2"
+                                    className="w-4 h-4 text-blue-400 focus:ring-blue-400 focus:ring-2 bg-white/10 border-white/30"
                                     onChange={handleSortData}
                                     checked={selectedSort === 'name-sort'}
                                 />
-                                <label htmlFor="name-sort" className="text-sm font-medium text-gray-700 cursor-pointer">
+                                <label htmlFor="name-sort" className="text-sm font-medium text-blue-100 cursor-pointer hover:text-white transition-colors duration-200">
                                     Name
                                 </label>
                             </div>
@@ -186,11 +189,11 @@ export const LaunchCardList = ({ launchData }) => {
                                     type="radio" 
                                     name="sort-selection" 
                                     id="success-sort" 
-                                    className="w-4 h-4 text-blue-600 focus:ring-blue-500 focus:ring-2"
+                                    className="w-4 h-4 text-blue-400 focus:ring-blue-400 focus:ring-2 bg-white/10 border-white/30"
                                     onChange={handleSortData}
                                     checked={selectedSort === 'success-sort'}
                                 />
-                                <label htmlFor="success-sort" className="text-sm font-medium text-gray-700 cursor-pointer">
+                                <label htmlFor="success-sort" className="text-sm font-medium text-blue-100 cursor-pointer hover:text-white transition-colors duration-200">
                                     Success
                                 </label>
                             </div>

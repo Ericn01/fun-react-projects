@@ -32,7 +32,7 @@ export const SpaceXProvider = ({ children }) => {
             ]);
 
             if (!launchesResponse.ok || !rocketsResponse.ok || !launchesResponse.ok) {
-            throw new Error('Failed to fetch data from SpaceX API');
+                throw new Error('Failed to fetch data from SpaceX API');
             }
 
             const [launchesData, rocketsData, launchpadsData] = await Promise.all([
@@ -48,7 +48,7 @@ export const SpaceXProvider = ({ children }) => {
             console.error('Error fetching SpaceX data:', error);
             setError(error.message);
         } finally {
-            setIsLoading(false);
+            setInterval(() => setIsLoading(false), 1500); // I'm adding the 1.5s delay so it looks like a beliavable delay when fetching the data. 
         }
         };
 
