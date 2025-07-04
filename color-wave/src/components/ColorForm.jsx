@@ -1,4 +1,11 @@
 import { FormInputInfo } from "./FormInputInfo";
+
+/**
+ * The color form controls the parameters responsible for the rendering of the color canvas. 
+ * @param {*} updateField function to update the values of the form.  
+ * @param {*} formData the form data parameters
+ * @returns 
+ */
 export const ColorForm = ( {updateField, formData} ) => {
     return (
     <form className="bg-white p-6 rounded-lg space-y-6 max-w-md mx-auto">

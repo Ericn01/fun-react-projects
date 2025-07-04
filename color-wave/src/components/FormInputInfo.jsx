@@ -1,3 +1,8 @@
+/**
+ * Provides a tooltip that presents more information to users about the functionality of a given form input.
+ * @param {*} tooltip the tooltip message 
+ * @returns JSX for the tooltip (displayed as ?)
+ */
 export const FormInputInfo = ({tooltip}) => {
     return (
         <div className="relative group inline-block">

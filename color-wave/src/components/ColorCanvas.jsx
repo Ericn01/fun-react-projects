@@ -1,6 +1,11 @@
 import { useEffect, useRef, useState } from "react";
 import ColorGenerator from "../ColorGenerator.js";
 
+/**
+ * This component is responsible for displaying a random canvas based off the provided form values.
+ * @param {*} formData the form parameters that control the display of the ColorCanvas
+ * @returns A colored, randomly generated canvas.
+ */
 export const ColorCanvas = ({formData}) => {
     const canvasRef = useRef(null);
 
