@@ -1,5 +1,4 @@
 import { useEffect, useState } from 'react'
-import './App.css'
 import { ColorForm } from './components/ColorForm.jsx';
 import { ColorCanvas } from './components/ColorCanvas.jsx';
 
