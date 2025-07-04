@@ -1,3 +1,6 @@
+/**
+ * The color generator class is responsibile for creating a pseudo-random color given a set of parameters.
+ */
 export default class ColorGenerator { 
     constructor(unifomity=50) {
         this.uniformity = unifomity;
