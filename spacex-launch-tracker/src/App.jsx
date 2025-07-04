@@ -10,7 +10,7 @@ function App() {
 
   return (
     <SpaceXProvider>
-      <div className="min-h-screen ">
+      <div className="min-h-screen bg-gradient-to-br from-slate-900 via-blue-900 to-indigo-900 m-0 p-0">
         <Header />
           <Routes>
             <Route path="/" element={<HomePage />} />

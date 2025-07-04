@@ -2,7 +2,7 @@
 import { Rocket } from "lucide-react";
 
 export const Header = () => (
-    <header className="bg-white/10 backdrop-blur-md border border-white/20 rounded-3xl shadow-2xl m-4 overflow-hidden">
+    <header className="bg-gradient-to-br from-slate-900 via-blue-900 to-indigo-900 rounded-3xl shadow-2xl overflow-hidden">
         <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-10">
         <div className="flex items-center justify-between py-6 md:py-8">
             <div className="flex items-center space-x-4">
@@ -16,17 +16,15 @@ export const Header = () => (
             
             <div>
                 <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight">
-                <span className="bg-gradient-to-r from-white via-blue-100 to-indigo-200 bg-clip-text text-transparent">
-                    SpaceX Launch Explorer
-                </span>
+                    <span className="bg-gradient-to-r from-white via-blue-100 to-indigo-200 bg-clip-text text-transparent">
+                        SpaceX Launch Explorer
+                    </span>
                 </h1>
                 <p className="text-base md:text-lg text-white/70 mt-1 hidden sm:block font-medium">
                 Mission & Rocket Data Dashboard
                 </p>
             </div>
             </div>
-
-        
         </div>
         </div>
     </header>

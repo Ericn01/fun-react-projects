@@ -1,0 +1,9 @@
+{
+  "name": "frontpage",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "build": "cp index.html build/index.html"
+  },
+  "dependencies": {}
+}
