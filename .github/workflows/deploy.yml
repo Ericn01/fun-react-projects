@@ -33,13 +33,13 @@ jobs:
         mkdir -p ../build/color-wave
         cp -r dist/* ../build/color-wave/
 
-    - name: Install and build space-x-launch-tracker
-      working-directory: space-x-launch-tracker
+    - name: Install and build spacex-launch-tracker
+      working-directory: spacex-launch-tracker
       run: |
         npm install
         npm run build
-        mkdir -p ../build/space-x-launch-tracker
-        cp -r dist/* ../build/space-x-launch-tracker/
+        mkdir -p ../build/spacex-launch-tracker
+        cp -r dist/* ../build/spacex-launch-tracker/
 
     - name: Deploy to GitHub Pages
       uses: peaceiris/actions-gh-pages@v3
