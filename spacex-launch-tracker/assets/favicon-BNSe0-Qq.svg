@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">
+  <!-- Background circle for better visibility -->
+  <circle cx="32" cy="32" r="32" fill="#1e293b"/>
+  
+  <!-- Earth/Planet -->
+  <circle cx="32" cy="32" r="12" fill="#3b82f6"/>
+  <circle cx="32" cy="32" r="12" fill="url(#earthGradient)"/>
+  
+  <!-- Continents/Land masses -->
+  <path d="M25 28 Q30 25 35 28 Q40 30 38 35 Q35 38 30 36 Q25 33 25 28Z" fill="#1e40af" opacity="0.7"/>
+  <path d="M28 40 Q32 38 36 40 Q38 42 35 44 Q32 45 28 43 Q26 41 28 40Z" fill="#1e40af" opacity="0.7"/>
+  
+  <!-- Primary orbital ring -->
+  <circle cx="32" cy="32" r="20" fill="none" stroke="#60a5fa" stroke-width="2" opacity="0.8"/>
+  
+  <!-- Secondary orbital ring (elliptical) -->
+  <ellipse cx="32" cy="32" rx="24" ry="16" fill="none" stroke="#93c5fd" stroke-width="1.5" opacity="0.6" transform="rotate(30 32 32)"/>
+  
+  <!-- Satellite/Spacecraft on orbit -->
+  <circle cx="52" cy="32" r="2" fill="#fbbf24">
+    <animateTransform attributeName="transform" type="rotate" values="0 32 32;360 32 32" dur="8s" repeatCount="indefinite"/>
+  </circle>
+  
+  <!-- Rocket on elliptical orbit -->
+  <g transform="rotate(0 32 32)">
+    <rect x="20" y="31" width="3" height="2" rx="1" fill="#f59e0b" transform="rotate(30 32 32)">
+      <animateTransform attributeName="transform" type="rotate" values="30 32 32;390 32 32" dur="12s" repeatCount="indefinite"/>
+    </rect>
+  </g>
+  
+  <!-- Stars -->
+  <circle cx="12" cy="12" r="1" fill="#ffffff" opacity="0.8"/>
+  <circle cx="52" cy="12" r="0.8" fill="#ffffff" opacity="0.6"/>
+  <circle cx="12" cy="52" r="0.8" fill="#ffffff" opacity="0.7"/>
+  <circle cx="48" cy="48" r="1" fill="#ffffff" opacity="0.8"/>
+  <circle cx="8" cy="32" r="0.6" fill="#ffffff" opacity="0.5"/>
+  <circle cx="56" cy="28" r="0.7" fill="#ffffff" opacity="0.6"/>
+  
+  <!-- Gradient definitions -->
+  <defs>
+    <radialGradient id="earthGradient" cx="0.3" cy="0.3">
+      <stop offset="0%" stop-color="#60a5fa"/>
+      <stop offset="100%" stop-color="#1e40af"/>
+    </radialGradient>
+  </defs>
+</svg>
