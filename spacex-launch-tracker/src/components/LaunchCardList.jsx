@@ -137,8 +137,8 @@ export const LaunchCardList = ({ launchData }) => {
                 
                 {/* Sort Panel */}
                 <div className={`overflow-hidden transition-all duration-300 ease-in-out ${
-                    /* hiddenPanel ? "max-h-0 opacity-0" : "max-h-40 opacity-100" --> might just be a better idea to always show the sorting button */
-                ""}`}>
+                    hiddenPanel ? "max-h-0 opacity-0" : "max-h-40 opacity-100"
+                }`}>
                     <div className="mt-4 p-4 bg-gradient-to-r from-blue-500/10 to-indigo-500/10 rounded-2xl border border-blue-400/20 backdrop-blur-sm">
                         <div className="flex items-center justify-between mb-4">
                             <h4 className="text-lg font-semibold text-white">Sort by</h4>
